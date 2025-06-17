@@ -39,7 +39,7 @@ class MegaCloudExtractor(
     companion object {
         private val SERVER_URL = arrayOf("https://megacloud.tv", "https://rapid-cloud.co")
         private val SOURCES_URL = arrayOf("/embed-2/ajax/e-1/getSources?id=", "/ajax/embed-6-v2/getSources?id=")
-        private val SOURCES_SPLITTER = arrayOf("/e-1/", "/embed-6-v2/")
+        private val SOURCES_SPLITTER = "/e-1/"
         private val SOURCES_KEY = arrayOf("1", "6")
         private const val E1_SCRIPT_URL = "https://megacloud.tv/js/player/a/prod/e1-player.min.js"
         private const val E6_SCRIPT_URL = "https://rapid-cloud.co/js/player/prod/e6-player-v2.min.js"
@@ -147,7 +147,7 @@ class MegaCloudExtractor(
         println("megacloud: type "+type+ " "+url)
         val keyType = SOURCES_KEY[type]
 
-        val id = url.substringAfter(SOURCES_SPLITTER[type], "")
+        val id = url.substringAfter(SOURCES_SPLITTER, "")
             .substringBefore("?", "").ifEmpty { throw Exception("I HATE THE ANTICHRIST") }
         println("megacloud: id " + id)
         if (type == 0) {
