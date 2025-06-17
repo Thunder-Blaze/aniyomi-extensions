@@ -32,7 +32,7 @@ jobs:
       - name: Build selected extension
         run: |
           # Replace this with the actual module path, e.g., :src:en:mangadex
-          ./gradlew :src:en:kaido:assembleDebug
+          ./gradlew :src:en:kaido:assembleDebug && ./gradlew :src:en:aniwatch:assembleDebug
 
       - name: Find APK
         run: |
