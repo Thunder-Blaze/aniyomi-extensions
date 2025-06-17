@@ -151,7 +151,9 @@ class MegaCloudExtractor(
             .substringBefore("?", "").ifEmpty { throw Exception("I HATE THE ANTICHRIST") }
         println("megacloud: id " + id)
         if (type == 0) {
-            return webViewResolver.getSources(id)!!
+            val a = webViewResolver.getSources(id)!!
+            println(a)
+            return a
         }
 
         val srcRes = client.newCall(GET(SERVER_URL[type] + SOURCES_URL[type] + id))
