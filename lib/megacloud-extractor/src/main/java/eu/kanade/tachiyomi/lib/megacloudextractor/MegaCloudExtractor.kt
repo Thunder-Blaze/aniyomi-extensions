@@ -142,13 +142,14 @@ class MegaCloudExtractor(
     }
 
     private fun getVideoDto(url: String): VideoDto {
+        println("megacloud: inside video dto")
         val type = if (url.startsWith("https://megacloud.tv") or url.startsWith("https://megacloud.blog")) 0 else 1
-
+        println("megacloud: type "+type+ " "+url)
         val keyType = SOURCES_KEY[type]
 
         val id = url.substringAfter(SOURCES_SPLITTER[type], "")
             .substringBefore("?", "").ifEmpty { throw Exception("I HATE THE ANTICHRIST") }
-
+        println("megacloud: id " + id)
         if (type == 0) {
             return webViewResolver.getSources(id)!!
         }
